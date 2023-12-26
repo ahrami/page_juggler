@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Page Juggler</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+
+<body>
+  <div class="full_height">
+    <h2>Page Juggler</h2>
+    <div class="inline">
+      <div>
+        <button id="main">Go Back To Main</button>
+
+        <div id="forms">
+          <div class="formdiv">
+            <h3>Generate Page</h3>
+            <form id="generate_page">
+              <div>
+                <label>Enter Size</label>
+                <input type="number" id="generate_page_size" value="10">
+              </div>
+              <button type="submit">Generate Page</button>
+            </form>
+          </div>
+
+          <div class="formdiv">
+            <h3>Save Page</h3>
+            <form id="save_page">
+              <div>
+                <label>Enter Filename</label>
+                <input type="text" id="save_page_filename" value="json_page_tmp.json">
+                <label>Select Database</label>
+                <select name="database" id="save_page_database">
+                  <option value="1" selected>json</option>
+                  <option value="2">jkey</option>
+                </select>
+              </div>
+              <button type="submit">Save Page</button>
+            </form>
+          </div>
+
+          <div class="formdiv">
+            <h3>Load Page</h3>
+            <form id="load_page">
+              <div>
+                <label>Enter Filename</label>
+                <input type="text" id="load_page_filename" value="json_page_tmp.json">
+                <label>Select Database</label>
+                <select name="database" id="load_page_database">
+                  <option value="1" selected>json</option>
+                  <option value="2">jkey</option>
+                </select>
+              </div>
+              <button type="submit">Load Page</button>
+            </form>
+          </div>
+
+          <div class="formdiv">
+
+            <h3>Page Info</h3>
+
+            <form id="verify_page">
+              <button type="submit">Get Number Of Objects In Page</button>
+            </form>
+          
+            <form id="hash_page">
+              <button type="submit">Hash Page</button>
+            </form>
+
+            <form id="print_page">
+              <button type="submit">Print Page</button>
+            </form>
+
+            <form id="get_page_sizes">
+              <button type="submit">Get Page Sizes</button>
+            </form>
+          </div>
+
+          <div class="formdiv">
+            <h3>Get Sizes</h3>
+            <form id="get_sizes">
+              <div>
+                <label>Enter Size</label>
+                <input type="number" id="get_sizes_size" value="10">
+              </div>
+              <button type="submit">Get Sizes</button>
+            </form>
+          </div>
+
+          <div class="formdiv">
+            <h3>Test</h3>
+            <form id="test">
+              <div>
+                <label>Enter Size</label>
+                <input type="number" id="test_size" value="10">
+                <label>Enter Generation Passes</label>
+                <input type="number" id="test_gen_passes" value="1">
+                <label>Enter File Passes</label>
+                <input type="number" id="test_file_passes" value="1">
+                <label>Save Results</label>
+                <select name="save" id="test_save_to_file">
+                  <option value="0" selected>no</option>
+                  <option value="1">yes</option>
+                </select>
+              </div>
+              <button type="submit">Test</button>
+            </form>
+          </div>
+
+          <div class="formdiv">
+            <h3>Test Generation</h3>
+            <form id="test_generate">
+              <div>
+                <label>Enter Size Low</label>
+                <input type="number" id="test_generate_size_low" value="10">
+                <label>Enter Size High</label>
+                <input type="number" id="test_generate_size_high" value="20">
+                <label>Enter Size Step</label>
+                <input type="number" id="test_generate_size_step" value="1">
+                <label>Enter Generation Passes</label>
+                <input type="number" id="test_generate_passes" value="4">
+                <label>Save Results</label>
+                <select name="save" id="test_generate_save_to_file">
+                  <option value="0" selected>no</option>
+                  <option value="1">yes</option>
+                </select>
+              </div>
+              <button type="submit">Test Generation</button>
+            </form>
+          </div>
+
+          <div class="formdiv no_line">
+            <button id="drop">Drop Database</button>
+          </div>
+
+        </div>
+      </div>
+      <div>
+        <button id="clear">Clear</button>
+        <div id="output"></div>
+      </div>
+    </div>
+  </div>
+  <script src="page_juggler.js"></script>
+</body>
+
+</html>

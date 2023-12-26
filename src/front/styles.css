@@ -1,0 +1,136 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: whitesmoke;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+h1, h2 {
+    margin-left: 10px;
+}
+
+button {
+    border: solid 1px slategray;
+    padding: 2px 6px;
+    background: none;
+}
+
+button:hover {
+    background-color: whitesmoke;
+}
+
+button:active {
+    background-color: grey;
+}
+
+button#drop {
+    background-color: #f77;
+}
+
+button#drop:hover {
+    background-color: #f66;
+}
+
+button#drop:active {
+    background-color: #c44;
+}
+
+input {
+    display: block;
+    padding: 4px 2px;
+    border: solid 1px slategray;
+    width: 220px;
+    margin: 2px 0px 10px 0px;
+}
+
+select {
+    padding: 4px 2px;
+    border: solid 1px slategray;
+    width: 100px;
+    margin: 2px 0px 10px 0px;
+}
+
+div.formdiv {
+    border-color: #ccc;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    padding-bottom: 10px;
+    width: 250px;
+    margin: 10px 10px 20px 10px;
+}
+
+div.no_line {
+    border: none;
+}
+
+div.formdiv h3 {
+    margin: 5px 0;
+}
+
+div.formdiv form {
+    margin: 5px 0;
+}
+
+div.inline {
+    display: inline-flex;
+}
+
+div.inline>div {
+    display: inline;
+}
+
+div.full_height {
+    height: calc(100vh - 20px);
+    overflow-y: hidden;
+}
+
+div#output {
+    white-space: pre;
+    border-color: slategray;
+    border-width: 1px;
+    border-style: solid;
+    width: calc(100vw - 420px);
+    height: calc(100vh - 140px);
+    font-size: small;
+    margin: 10px;
+    padding: 5px;
+    overflow-y: auto;
+}
+
+div#output>div {
+    text-wrap: wrap;
+    word-wrap: break-word;
+}
+
+div#forms {
+    border-color: slategray;
+    border-width: 1px;
+    border-style: solid;
+    width: 340px;
+    height: calc(100vh - 140px);
+    font-size: small;
+    margin: 10px;
+    padding: 5px;
+    overflow-y: auto;
+}
+
+button#clear {
+    margin-left: 10px;
+}
+
+button#main {
+    margin-left: 10px;
+}

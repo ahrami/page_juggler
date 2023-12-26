@@ -1,0 +1,17 @@
+{
+  "name": "n_ocean",
+  "version": "1.0.0",
+  "description": "n_ocean is a pun",
+  "main": "src/scripts/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "andyrift",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^27.1.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

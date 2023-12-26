@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Linear Test</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+
+<body>
+  <h1>Linear Test</h1>
+  <button id="main">Go Back To Main</button>
+
+  <div class="formdiv">
+    <h3>Test Page Generation Form</h3>
+    <form id="generate_page_test_form">
+      <div>
+        <label>Start Size</label>
+        <input type="number" id="start_size" value="1">
+        <label>End Size</label>
+        <input type="number" id="end_size" value="10">
+        <label>Step Size</label>
+        <input type="number" id="step_size" value="1">
+        <label>Passes</label>
+        <input type="number" id="passes" value="4">
+      </div>
+      <button type="submit">Start Testing</button>
+    </form>
+    <div id="test_results"></div>
+    <canvas id="canvas1"></canvas>
+  </div>
+
+  <script>
+    const electron = require('electron');
+    const { ipcRenderer } = electron;
+
+    document.querySelector('button#main').addEventListener('click', (e) => {
+      e.preventDefault()
+      ipcRenderer.send('open:window', { window: 'main' })
+    })
+
+    const submitTest = (e) => {
+      e.preventDefault();
+      const start_size = document.querySelector('#start_size').value;
+      const end_size = document.querySelector('#end_size').value;
+      const step_size = document.querySelector('#step_size').value;
+      const passes = document.querySelector('#passes').value;
+      const data = {
+        start_size: start_size,
+        end_size: end_size,
+        step_size: step_size,
+        passes: passes
+      };
+      ipcRenderer.send('test:linear', data);
+    }
+    document.querySelector('#generate_page_test_form').addEventListener('submit', submitTest);
+
+    const canvas = document.querySelector('#canvas1')
+    const c = canvas.getContext("2d")
+    canvas.width = 400
+    canvas.height = 300
+    c.fillStyle = "grey";
+    c.strokeStyle = "green";
+    c.lineWidth = 2
+    c.moveTo(0, 0);
+    c.lineTo(100, 100);
+    c.lineTo(100, 200);
+    c.stroke();
+    c.fillRect(0, 0, canvas.width, canvas.height)
+
+    ipcRenderer.on('test:linear', (e, data) => {
+
+      let results = data.results
+      let max_time = 0;
+      for (let i = 0; i < results.length; i++) {
+        console.log(results[i].elapsed)
+        if (parseFloat(results[i].elapsed) > max_time) {
+          max_time = parseFloat(results[i].elapsed);
+        }
+      }
+
+      console.log(max_time)
+      let passes = parseInt(data.data.passes)
+
+      let x_scale = canvas.width / (results.length / passes - 1)
+      let y_scale = canvas.height / max_time
+
+      console.log(y_scale)
+
+      c.fillRect(0, 0, canvas.width, canvas.height)
+
+      c.beginPath();
+      c.moveTo(0, 0);
+
+      console.log(passes)
+      for (let i = 0; i < results.length / passes; i++) {
+        let time = 0
+        for (let j = 0; j < passes; j++) {
+          time += parseFloat(results[i * passes + j].elapsed);
+        }
+        time /= passes;
+        console.log(y_scale * time)
+        c.lineTo(Math.floor(x_scale * i), Math.floor(canvas.height - y_scale * time));
+      }
+
+      c.stroke();
+    });
+
+
+  </script>
+</body>
+
+</html>
